@@ -1,1 +1,1 @@
-# design50.vsix
+# design50 README
