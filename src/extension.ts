@@ -1,22 +1,35 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  const disposable = vscode.commands.registerCommand("design50.run", () => {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      vscode.window.showErrorMessage("No active text editor found!");
+      return;
+    }
+    const languageId = editor.document.languageId;
+    const code = editor.document.getText();
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('design50.run', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('design50 running!');
-	});
+    try {
+      const ddb50 = vscode.extensions.getExtension("cs50.ddb50");
+      const api = ddb50!.exports;
+      const displayMessage = "Provide design feedback";
+      const payload = {
+        api: "/api/v1/design",
+        config: "chat_cs50",
+        code: code,
+        language_id: languageId,
+        stream: true,
+      };
 
-	context.subscriptions.push(disposable);
+      const contextMessage = `${displayMessage}:\n\`\`\`${languageId}\n${code}`;
+      api.requestGptResponse(displayMessage, contextMessage, payload);
+    } catch (error) {
+      console.error(error);
+    }
+  });
+
+  context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
