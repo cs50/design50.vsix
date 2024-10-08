@@ -29,7 +29,7 @@
       "editor/title": [
         {
           "command": "design50.run",
-          "group": "navigation@0",
+          "group": "navigation@-50",
           "when": "(resourceExtname =~ /\\.(py|c|cpp|h|hpp|java|html|css|js)$/) && !isInDiffEditor"
         }
       ]
