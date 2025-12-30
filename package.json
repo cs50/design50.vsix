@@ -6,7 +6,7 @@
   "publisher": "CS50",
   "repository": "https://github.com/cs50/design50.vsix",
   "engines": {
-    "vscode": "^1.103.0"
+    "vscode": "^1.107.0"
   },
   "categories": [
     "Education",
@@ -45,14 +45,14 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "24.x",
-    "@types/vscode": "^1.103.0",
-    "@typescript-eslint/eslint-plugin": "^8.41.0",
-    "@typescript-eslint/parser": "^8.41.0",
-    "@vscode/test-cli": "^0.0.11",
+    "@types/node": "25.x",
+    "@types/vscode": "^1.107.0",
+    "@typescript-eslint/eslint-plugin": "^8.51.0",
+    "@typescript-eslint/parser": "^8.51.0",
+    "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.34.0",
-    "typescript": "^5.9.2"
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "tall": "^8.0.0"
